@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../../assets/logo.SVG'
+import { AuthContext } from '../../../providers/AuthProviders';
 
 const Header = () => {
+
+    const { user, logout } = useContext(AuthContext);
+
+    const logoutHandler = () => {
+        logout()
+            .then()
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
     const navListLink = <>
         <li><a>Home</a></li>
         <li><a>About</a></li>
         <li><a>Services</a></li>
         <li><a>Blog</a></li>
         <li><a>Contact</a></li>
+        <li><a>{user?.email}</a></li>
+        {
+            user ?
+                <button onClick={logoutHandler} className='btn btn-secondary'>Logout</button>
+                :
+                <button className='btn btn-primary'>Login</button>
+        }
     </>
-
 
     return (
         <div className="navbar bg-base-100">

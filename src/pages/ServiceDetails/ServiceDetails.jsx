@@ -3,17 +3,16 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const ServiceDetails = () => {
     const service = useLoaderData()
-    console.log(service);
-    const { img, title, description, facility, price } = service;
+    const { _id, img, title, description, facility, price } = service;
 
     return (
         <div>
             <div className="carousel-item relative w-full ">
                 <img src={img} className="w-full" style={{ height: '53vh' }} />
                 <div style={{ height: '53vh' }} className="absolute flex flex-col justify-center transform bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0) 100%)] w-full pl-10">
-                    <div className='text-white w-1/3 space-y-5'>
+                    <div className='text-white space-y-5'>
                         <h1 className="text-5xl font-bold">
-                            Service Details
+                            Service Details : {title}
                         </h1>
                     </div>
                 </div>
@@ -41,7 +40,7 @@ const ServiceDetails = () => {
 
                         <div>
                             <h1 className="text-3xl font-bold">Price: ${price}</h1>
-                            <Link>
+                            <Link to={`/order-confirm/${_id}`}>
                                 <button className="btn btn-secondary">Proceed Checkout</button>
                             </Link>
                         </div>

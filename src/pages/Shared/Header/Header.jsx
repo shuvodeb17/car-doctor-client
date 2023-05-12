@@ -26,7 +26,9 @@ const Header = () => {
             user ?
                 <button onClick={logoutHandler} className='btn btn-secondary'>Logout</button>
                 :
-                <button className='btn btn-primary'>Login</button>
+                <Link to='/login'>
+                    <button className='btn btn-primary'>Login</button>
+                </Link>
         }
     </>
 

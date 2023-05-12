@@ -16,8 +16,8 @@ const Banner = () => {
                         </h1>
                         <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
                         <div>
-                            <button className="btn btn-error me-5">Error</button>
-                            <button className="btn btn-outline btn-primary">Button</button>
+                            <button className="btn btn-error me-5">Discover More</button>
+                            <button className="btn btn-outline btn-primary">Latest Project</button>
                         </div>
                     </div>
                     <div className='flex justify-end absolute bottom-10 right-0 pr-10'>

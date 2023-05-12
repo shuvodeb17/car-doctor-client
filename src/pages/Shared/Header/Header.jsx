@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.SVG'
 import { AuthContext } from '../../../providers/AuthProviders';
 
@@ -15,11 +16,11 @@ const Header = () => {
     }
 
     const navListLink = <>
-        <li><a>Home</a></li>
-        <li><a>About</a></li>
-        <li><a>Services</a></li>
-        <li><a>Blog</a></li>
-        <li><a>Contact</a></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/'>About</Link></li>
+        <li><Link to='/'>Services</Link></li>
+        <li><Link to='/'>Blog</Link></li>
+        <li><Link to='/'>Contact</Link></li>
         <li><a>{user?.email}</a></li>
         {
             user ?

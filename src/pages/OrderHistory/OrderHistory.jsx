@@ -1,17 +1,36 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProviders';
 import OrderDataShow from './OrderDataShow';
 
 const OrderHistory = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const [orders, setOrders] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-orders?email=${user?.email}`)
+        fetch(`http://localhost:5000/all-orders?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('car-access-token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
-                setOrders(data);
+                if (!data.error) {
+                    setOrders(data);
+                }
+                else {
+                    /* logout()
+                        .then(() => {
+                            localStorage.removeItem('car-access-token')
+                        })
+                        .catch(error => {
+                            console.log(error.message);
+                        }) */
+                    navigate('/')
+                }
             })
     }, [])
 

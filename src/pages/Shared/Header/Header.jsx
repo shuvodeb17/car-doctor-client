@@ -24,7 +24,10 @@ const Header = () => {
         <li><a>{user?.email}</a></li>
         {
             user ?
-                <button onClick={logoutHandler} className='btn btn-secondary'>Logout</button>
+                <>
+                    <button onClick={logoutHandler} className='btn btn-secondary'>Logout</button>
+                    <li><Link to='/orders-history'>Order History</Link></li>
+                </>
                 :
                 <Link to='/login'>
                     <button className='btn btn-primary'>Login</button>

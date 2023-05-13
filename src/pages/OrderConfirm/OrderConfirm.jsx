@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProviders';
 
 const OrderConfirm = () => {
@@ -39,6 +40,14 @@ const OrderConfirm = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successful',
+                        text: 'Order confirm successful',
+                    })
+
+                }
             })
     }
 

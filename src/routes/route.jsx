@@ -6,8 +6,10 @@ import Main from "../Layout/Main";
 import RegistrationLayout from "../Layout/RegistrationLayout";
 import Home from "../pages/Home/Home/Home";
 import OrderConfirm from "../pages/OrderConfirm/OrderConfirm";
+import OrderHistory from "../pages/OrderHistory/OrderHistory";
 import Registration from "../pages/Registration/Registration";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -26,8 +28,12 @@ const router = createBrowserRouter([
             },
             {
                 path: 'order-confirm/:id',
-                element: <OrderConfirm />,
+                element: <PrivateRoute><OrderConfirm /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`)
+            },
+            {
+                path: 'orders-history',
+                element: <PrivateRoute><OrderHistory /></PrivateRoute>
             }
         ]
     },
